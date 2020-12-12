@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   // Urls
-  const url = "http://localhost:3000/foods";
+  const url = "https://bc-grocery-list.herokuapp.com";
 
   // Set state for items
   const [items, setItems] = React.useState([]);
@@ -16,7 +16,7 @@ function App() {
 
   // Function that will grab the data from my rails server
   const getItems = async () => {
-    const response = await fetch("http://localhost:3000/foods");
+    const response = await fetch(url);
     const data = await response.json();
     console.log(data);
     setItems(data);
@@ -40,7 +40,7 @@ function App() {
             <button
               onClick={async () => {
                 //Make delete request
-                await fetch("http://localhost:3000/foods/" + item.id, {
+                await fetch(url + "/" + item.id, {
                   method: "delete",
                 });
                 getItems();
@@ -63,7 +63,7 @@ function App() {
   };
 
   const handleUpdate = async (item) => {
-    await fetch(url + item.id, {
+    await fetch(url + "/" + item.id, {
       method: "puts",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function App() {
     // Prevent Refresh
     event.preventDefault();
     // Make post request to create new food
-    await fetch("http://localhost:3000/foods", {
+    await fetch(url + "/", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
