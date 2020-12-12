@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   // Urls
-  const url = "https://bc-grocery-list.herokuapp.com";
+  const url = "https://bc-grocery-list.herokuapp.com/";
 
   // Set state for items
   const [items, setItems] = React.useState([]);
@@ -40,7 +40,7 @@ function App() {
             <button
               onClick={async () => {
                 //Make delete request
-                await fetch(url + "/" + item.id, {
+                await fetch(url + item.id, {
                   method: "delete",
                 });
                 getItems();
@@ -63,7 +63,7 @@ function App() {
   };
 
   const handleUpdate = async (item) => {
-    await fetch(url + "/" + item.id, {
+    await fetch(url + item.id, {
       method: "puts",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function App() {
     // Prevent Refresh
     event.preventDefault();
     // Make post request to create new food
-    await fetch(url + "/", {
+    await fetch(url, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
