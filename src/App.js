@@ -16,7 +16,7 @@ function App() {
 
   // Function that will grab the data from my rails server
   const getItems = async () => {
-    const response = await fetch(url);
+    const response = await fetch(url + "/");
     const data = await response.json();
     console.log(data);
     setItems(data);
