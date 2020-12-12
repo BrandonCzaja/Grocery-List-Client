@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   // Urls
-  const url = "http://localhost:3000/foods";
+  const url = "https://bc-grocery-list.herokuapp.com/foods";
 
   // Set state for items
   const [items, setItems] = React.useState([]);
